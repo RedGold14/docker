@@ -1,0 +1,11 @@
+docker service ls
+
+docker service scale products-fruit=5
+OR
+docker service update --replicas 5 products-fruit
+
+docker service ls
+
+docker service create --name products-vegetables -p 8081:80 --replicas 3 linuxacademycontent/vegetable-service:1.0.0 
+
+curl localhost:8081

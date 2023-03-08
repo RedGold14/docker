@@ -1,0 +1,11 @@
+CREATE BRIDGE NETWORK:
+docker network create --driver bridge prices-net
+
+SET UP CONTAINERS: 
+docker run --name base-price -d --network prices-net linuxacademycontent/prices-base-price:1
+docker run --name sales -d --network prices-net linuxacademycontent/prices-sales:1
+docker run --name total-price -d --network prices-net -p 8000:80 inuxacademycontent/prices-total-price:1
+
+docker ps
+
+curl localhost:8080

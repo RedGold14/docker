@@ -1,0 +1,17 @@
+Set storage driver (not recommended way):
+
+- [example] sudo vi /usr/lib/systemd/system/docker.service
+- [add after ExecStart=/usr/bin/dockerd] --storage-driver [devicemapper | overlay2]
+- sudo systemctl daemon-reload
+- sudo systemctl restart docker 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Set storage driver (more standardized way):
+
+sudo vi /etc/docker/daemon.json
+[add to file] 
+{
+	"storage-driver": "[devicemapper | overlay2]"
+}
+- sudo systemctl restart docker 

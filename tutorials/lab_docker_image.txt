@@ -1,0 +1,22 @@
+vi Dockerfile
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+FROM nginx:1.15.8 
+
+ADD static/fruit.json /usr/share/nginx/html/fruit.json
+ADD nginx.conf  
+
+EXPOSE 80 
+
+CMD ["nginx", "-g", "daemon off;"]
+
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+
+docker build -t fruit-list:1.0.0 . 
+
+docker run --name fruit-list -d -p 8080:80 fruit-list:1.0.0
+
+curl localhost:8080

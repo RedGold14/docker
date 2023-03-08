@@ -1,0 +1,10 @@
+CREATE OVERLAY NETWORK:
+docker network create --driver overlay prices-overlay-net
+
+CREATE SERVICES:
+docker service create --name base-price --network prices-overlay-net --replicas 3 linuxacademycontent/prices-base-price:1
+docker service create --name sales --network prices-overlay-net --replicas 3 linuxacademycontent/prices-sales:1
+docker service create --name total-price --network prices-overlay-net --replicas 2 -p 8080:80 linuxacademycontent/prices-total-price:1
+
+docker service ls
+curl localhost:8080

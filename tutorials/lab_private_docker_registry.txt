@@ -1,0 +1,34 @@
+------------------
+REGISTRY SERVER
+------------------
+
+REGISTRY AUTHENTICATION:
+mkdir -p ~/registry/auth
+docker run --entrypoint htpasswd registry:2 -Bbn docker dOck3rrU73z > ~/registry/auth/htpasswd
+ls registry/auth/
+mkdir -p ~/registry/certs
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout ~/registry/certs/domain.key -x509 -days 365 -out ~/registry/certs/domain.crt
+ENTER: Common Name: ip-10-0-1-101
+ls registry/certs/
+docker run -d -p 443:443 --restart=always --name registry \
+-v /home/cloud_user/registry/certs/:/certs \
+-v /home/cloud_user/registry/auth/:/auth \
+-e REGISTRY_HTTP_ADDR=0.0.0.0:443 \
+-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+-e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \ 
+-e REGISTRY_AUTH=htpasswd \
+-e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" \
+-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \ 
+registry:2
+curl -k htpps://localhost:443
+echo $HOSTNAME
+sudo mkdir -p /etc/docker/certs.d/ip-10-0-1-101:443
+sudo scp cloud_user@ip-10-0-1-101:/home/cloud_user/registry/certs/domain.crt /etc/docker/certs.d/ip-10-0-1-101:443
+docker login ip-10-0-1-101
+docker pull ubuntu
+docker tag ubuntu ip-10-0-1-101:443/test-image:1 
+docker push ip-10-0-1-101/test-image:1
+docker pull ip-10-0-1-101/test-image:1
+docker image rm ip-10-0-1-101/test-image:1
+docker image rm ubuntu
+docker pull ip-10-0-1-101:443/test-image:1

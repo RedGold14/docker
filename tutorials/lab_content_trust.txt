@@ -1,0 +1,10 @@
+GENERATE TRUST KEY AND ADD YOURSELF AS A SIGNER:
+docker trust key generate docker
+docker trust signer add --key docker.pub docker ip-10-0-1-102:443/content-dca-tea 
+
+CREATE A NEW TAG FOR IMAGE:
+docker tag linuxacademycontent/content-dca-tea:1 ip-10-0-1-102:443/content-dca-tea:1
+docker trust sign ip-10-0-1-102:443/content-dca-tea:1 
+
+docker run -d -p 8080:80 ip-10-0-1-102:443/content-dca-tea:1 
+curl localhost:8080

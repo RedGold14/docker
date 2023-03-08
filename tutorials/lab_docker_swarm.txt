@@ -1,0 +1,53 @@
+------------------
+ ON ALL NODES
+------------------
+
+sudo apt-get update
+
+sudo apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu/ $(lsb_release -cs) stable"
+
+sudo apt-get update
+
+sudo apt-get -y install docker-ce=5:18.09.5~3-0~ubuntu-bionic docker-ce-cli=5:18.09.5~3-0~ubuntu-bionic containerd.io
+
+sudo docker version
+
+ADD USER TO A DOCKER GROUP:
+sudo usermod -a -G docker cloud_user
+
+REBOOT:
+exit
+(AND LOGIN BACK)
+
+RUN DOCKER WITHOUT SUDO:
+docker version
+
+-------------------------------------------------------------------------------------
+
+------------------
+ON SWARM SERVER
+------------------
+
+docker swarm init --advertise-addr 10.0.1.101
+
+OPTIONAL:
+docker swarm join-token worker
+docker node ls
+
+------------------
+ON WORKER NODE(S)
+------------------
+
+EXAMPLE:
+docker swarm join --token SWMTKN-1-5eaqhdnjzr6mm4jp2xt4w4ywamgly804xlsy84v0f50b7nl8eh-960f78ezixd4suka4e4r491ha 10.0.1.101:2377
+
+------------------
+ON SWARM SERVER
+------------------
+
+OPTIONAL:
+docker node ls
