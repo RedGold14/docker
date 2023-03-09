@@ -10,3 +10,6 @@ Before running rm stop all of its running containers.
 
 docker rmi <image-name>
 Before running stop all the containers that are using the image.
+
+docker ps 
+docker images
