@@ -18,3 +18,9 @@ Advantages of using Docker:
 - Resource Usage Efficiency. Docker uses computer resources efficiently as compared to virtual machines.
 - Support By Multi-Cloud Platforms. Suppoted by AWS, GCP, Azure etc.
 - Test and Run Anywhere. If containers are running fine on test environment then the containers will work as expected on the deployment environment.
+
+----------------------------------------------------------------------------------------------
+
+Disatvantages of using Docker:
+- Docker Data Persistence. Docker does not provide data persistence by default there is need to configure volumes in order to persists data on the host machine.
+- Docker Containers do not work at Bare-Metal rates. Containers utilise resources more efficiently than virtual machines. But containers are however directed to performance overhead due to overlay networking and so on.
