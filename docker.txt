@@ -1,0 +1,20 @@
+Docker uses the client-server architecture: the docker client, the docker host and the docker registry (docker hub)
+
+Docker Client normally pass commands to docker.
+
+Docket Host is the machine that is responsible for running docker containers.
+Docker Host also contains the docker daemon.
+
+Docker daemon is the background service that listens for docker API requests from the docker client and it is also responsible for managing docker objects.
+
+Docker Registry is used to store docker images. Docker hub is the docker's official registry.
+
+----------------------------------------------------------------------------------------------
+
+Advantages of using Docker:
+- Rapid System Deployment. Docker containers by default include the minimal runtime requirements of the application.
+- System Security. Docker containers run in an isolated environment which provides security by granting the control of traffic flow between containers and isolation of container processes. Also the usage of docker volumes to persist data makes it easy to recover data.
+- System Isolation. Isolated environment prevents conflicts with other systems on the same server
+- Resource Usage Efficiency. Docker uses computer resources efficiently as compared to virtual machines.
+- Support By Multi-Cloud Platforms. Suppoted by AWS, GCP, Azure etc.
+- Test and Run Anywhere. If containers are running fine on test environment then the containers will work as expected on the deployment environment.
