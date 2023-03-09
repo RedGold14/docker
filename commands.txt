@@ -1,0 +1,12 @@
+docker start <container-name>
+It is possible to start multiple docker containers.
+
+docker stop <container-name>
+
+docker restart <container-name>
+
+docker rm <container-name>
+Before running rm stop all of its running containers.
+
+docker rmi <image-name>
+Before running stop all the containers that are using the image.
