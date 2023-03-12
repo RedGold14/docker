@@ -1,0 +1,2 @@
+docker rmi <image>
+Error response from daemon: conflict: unable to delete <image> (must be forced) - image is being used by stopped container <container>
