@@ -9,3 +9,5 @@
 ### docker client
 ### docker host
 ### docker registry
+------------------------------------
+### docker.socket
