@@ -1,0 +1,7 @@
+Command:
+sudo docker rmi --force <image>
+
+Example output:
+Untagged: docker.bintray.io/jfrog/artifactory-oss:latest
+Untagged: docker.bintray.io/jfrog/artifactory-oss@sha256:<sha-code>
+Deleted: sha256:<sha-code>
