@@ -12,3 +12,13 @@ sudo rm -rf /var/run/docker.sock
 
 ---------------------------------------------------
 
+1. Remove docker from snap:
+snap remove docker
+
+2. Remove docker directory:
+rm -R /var/lib/docker
+
+3. Remove old docker version:
+sudo apt-get remove docker docker-engine docker.io
+
+4. Install official docker.
