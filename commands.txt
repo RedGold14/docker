@@ -8,8 +8,16 @@ docker restart <container-name>
 docker rm <container-name>
 Before running rm stop all of its running containers.
 
+docker rm  $(docker ps -q -a)
+
 docker rmi <image-name>
 Before running stop all the containers that are using the image.
 
+docker rmi -f <image-name>
+docker rmi --force <image-name>
+--force, -f - Force removal of the image. Untag and remove image with specified ID.
+
 docker ps 
+docker ps -a 
+
 docker images
